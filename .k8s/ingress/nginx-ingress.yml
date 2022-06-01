@@ -1,0 +1,35 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    # https possible
+    nginx.ingress.kubernetes.io/backend-protocol: HTTP
+    cert-manager.io/cluster-issuer: letsencrypt-production
+  name: nginx-ingress
+
+spec:
+  rules:
+    - host: dkan2.fixcity.de
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dkan2
+                port:
+                  number: 80
+    - host: dkan2-test.fixcity.de
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dkan2
+                port:
+                  number: 80
+  tls:
+    - hosts:
+      - dkan2.fixcity.de
+      secretName: letsencrypt-production

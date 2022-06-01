@@ -1,0 +1,22 @@
+uuid: db57c588-c90f-49ec-ae65-7ba4fa48b228
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - dkan_js_frontend_bartik
+_core:
+  default_config_hash: y0bXRvKYQQKkf_RVxA3aOPGpIfKKsDOzzrWYCgjxJ9Y
+id: dkan_js_frontend_bartik_breadcrumbs
+theme: dkan_js_frontend_bartik
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: '0'
+  provider: system
+visibility: {  }

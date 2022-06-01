@@ -1,0 +1,23 @@
+uuid: 3a38a093-9e35-453d-83a3-6f23d9bfed56
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - dkan_js_frontend_bartik
+_core:
+  default_config_hash: jQ-C8l3dJPqYCGST1e-kSjR14PDP4wq-iFbp8dMFcRo
+id: dkan_js_frontend_bartik_search
+theme: dkan_js_frontend_bartik
+region: sidebar_first
+weight: -1
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: Search
+  label_display: visible
+  provider: search
+  page_id: node_search
+visibility: {  }

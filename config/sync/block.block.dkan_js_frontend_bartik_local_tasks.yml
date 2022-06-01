@@ -1,0 +1,22 @@
+uuid: 817ec37c-5d2b-4dbf-9633-17477cd86715
+langcode: en
+status: true
+dependencies:
+  theme:
+    - dkan_js_frontend_bartik
+_core:
+  default_config_hash: Qf2BoIzd9py5AYXZj8fJzCYDyVk1-AWXcu-AqQeDZKA
+id: dkan_js_frontend_bartik_local_tasks
+theme: dkan_js_frontend_bartik
+region: content
+weight: -40
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: true
+visibility: {  }

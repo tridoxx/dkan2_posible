@@ -1,0 +1,22 @@
+uuid: 38f78c5b-f90d-4d7a-94b4-418e856911d5
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - dkan_js_frontend_bartik
+_core:
+  default_config_hash: KC12e0aosUnBBs5bd374JVcQjJaFNOSIHzu0dUGf22o
+id: dkan_js_frontend_bartik_messages
+theme: dkan_js_frontend_bartik
+region: highlighted
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  label_display: '0'
+  provider: system
+visibility: {  }

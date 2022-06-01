@@ -1,0 +1,20 @@
+uuid: 41732b88-d9ba-497c-b092-8971dc6d3ccc
+langcode: en
+status: true
+dependencies:
+  theme:
+    - dkan_js_frontend_bartik
+_core:
+  default_config_hash: ItFhhiUOoeR7oIq73ZaCV7PAYrOwXZ-9fazMzF5DJXM
+id: dkan_js_frontend_bartik_page_title
+theme: dkan_js_frontend_bartik
+region: content
+weight: -50
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility: {  }

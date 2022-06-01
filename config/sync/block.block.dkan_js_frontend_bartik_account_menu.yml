@@ -1,0 +1,27 @@
+uuid: 315d1422-43d7-4d1e-ac47-9d9e82a51533
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.account
+  module:
+    - system
+  theme:
+    - dkan_js_frontend_bartik
+_core:
+  default_config_hash: jzu74Q7R0QWgw8IniA9HZRSb_a8RPak1M0q5J-VGkZI
+id: dkan_js_frontend_bartik_account_menu
+theme: dkan_js_frontend_bartik
+region: secondary_menu
+weight: 0
+provider: null
+plugin: 'system_menu_block:account'
+settings:
+  id: 'system_menu_block:account'
+  label: 'User account menu'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 1
+  expand_all_items: false
+visibility: {  }

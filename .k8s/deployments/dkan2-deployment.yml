@@ -1,0 +1,84 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: dkan2
+  name: dkan2
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dkan2
+  template:
+    metadata:
+      labels:
+        app: dkan2
+    spec:
+      initContainers:
+        - name: init-code
+          image: markaspot/dkan2:latest
+          imagePullSecrets:
+            - name: regcred
+          volumeMounts:
+            - mountPath: /var/www/html
+              name: shared-data
+          command: ["/bin/sh", "-c", "cp -r /app/data/. /var/www/html"]
+      containers:
+        - name: web
+          image: nginx:stable-alpine
+          lifecycle:
+            postStart:
+              exec:
+                command: [ "/bin/sh", "-c", "chmod -R 777 /var/www/html/web/sites/default/files && chmod -R 777 /var/www/html/private" ]
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: shared-data
+              mountPath: /var/www/html
+            - name: nginx-config-volume
+              mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
+        - name: drupal
+          imagePullPolicy: Always
+          image: markaspot/dkan2:latest
+          volumeMounts:
+            - name: shared-data
+              mountPath: /var/www/html
+            - name: shared-data
+              mountPath: /var/www/html/private
+          envFrom:
+            - secretRef:
+                name: regcred
+          env:
+            - name: DRUPAL_DATABASE_HOST
+              value: mariadb:3306
+            - name: DRUPAL_DATABASE_NAME
+              value: drupal
+            - name: DRUPAL_DATABASE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: drupal-secret
+                  key: DRUPAL_DATABASE_USERNAME
+            - name: DRUPAL_DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: drupal-secret
+                  key: DRUPAL_DATABASE_PASSWORD
+            - name: DRUPAL_DATABASE_PORT
+              value: "3306"
+            - name: DRUPAL_HASH_SALT
+              value: fe918c992fb1bcfa01f32303c8b21f3d0a0
+          ports:
+            - containerPort: 9000
+              name: fastcgi
+      imagePullSecrets:
+        - name: regcred
+      volumes:
+        - name: shared-data
+          emptyDir: {}
+          # https://github.com/kubernetes/kubernetes/issues/831
+          # https://github.com/kubernetes/kubernetes/issues/22894
+        - name: nginx-config-volume
+          configMap:
+            name: nginx-config

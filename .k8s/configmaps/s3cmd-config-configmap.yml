@@ -1,0 +1,36 @@
+apiVersion: v1
+data:
+  .s3cfg: "[default]\naccess_key = 00abe2a3e84d93854f7a\naccess_token = \nadd_encoding_exts
+    = \nadd_headers = \nbucket_location = US\nca_certs_file = \ncache_file = \ncheck_ssl_certificate
+    = True\ncheck_ssl_hostname = True\ncloudfront_host = cloudfront.amazonaws.com\nconnection_max_age
+    = 5\nconnection_pooling = True\ncontent_disposition = \ncontent_type = \ndefault_mime_type
+    = binary/octet-stream\ndelay_updates = False\ndelete_after = False\ndelete_after_fetch
+    = False\ndelete_removed = False\ndry_run = False\nenable_multipart = True\nencoding
+    = UTF-8\nencrypt = False\nexpiry_date = \nexpiry_days = \nexpiry_prefix = \nfollow_symlinks
+    = False\nforce = False\nget_continue = False\ngpg_command = None\ngpg_decrypt
+    = %(gpg_command)s -d --verbose --no-use-agent --batch --yes --passphrase-fd %(passphrase_fd)s
+    -o %(output_file)s %(input_file)s\ngpg_encrypt = %(gpg_command)s -c --verbose
+    --no-use-agent --batch --yes --passphrase-fd %(passphrase_fd)s -o %(output_file)s
+    %(input_file)s\ngpg_passphrase = \nguess_mime_type = True\nhost_base = de-2.s3.psmanaged.com\nhost_bucket
+    = dkan2\nhuman_readable_sizes = False\ninvalidate_default_index_on_cf
+    = False\ninvalidate_default_index_root_on_cf = True\ninvalidate_on_cf = False\nkms_key
+    = \nlimit = -1\nlimitrate = 0\nlist_md5 = False\nlog_target_prefix = \nlong_listing
+    = False\nmax_delete = -1\nmime_type = \nmultipart_chunk_size_mb = 15\nmultipart_copy_chunk_size_mb
+    = 1024\nmultipart_max_chunks = 10000\npreserve_attrs = True\nprogress_meter =
+    True\nproxy_host = \nproxy_port = 0\npublic_url_use_https = False\nput_continue
+    = False\nrecursive = False\nrecv_chunk = 65536\nreduced_redundancy = False\nrequester_pays
+    = False\nrestore_days = 1\nrestore_priority = Standard\nsecret_key = S4gDCBoOKWmnysItjEKRKzLqaWoKjXAaz9YkW9Y7\nsend_chunk
+    = 65536\nserver_side_encryption = False\nsignature_v2 = False\nsignurl_use_https
+    = False\nsimpledb_host = sdb.amazonaws.com\nskip_existing = False\nsocket_timeout
+    = 300\nssl_client_cert_file = \nssl_client_key_file = \nstats = False\nstop_on_error
+    = False\nstorage_class = \nthrottle_max = 100\nupload_id = \nurlencoding_mode
+    = normal\nuse_http_expect = False\nuse_https = True\nuse_mime_magic = True\nverbosity
+    = WARNING\nwebsite_endpoint = http://%(bucket)s.s3-website-%(location)s.amazonaws.com/\nwebsite_error
+    = \nwebsite_index = index.html\n"
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2022-04-12T06:20:22Z"
+  name: s3config
+  namespace: dkan2
+  resourceVersion: "1472987"
+  uid: 3bbb6063-3217-4fd6-9652-39b211a2c9d0

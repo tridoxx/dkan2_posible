@@ -1,0 +1,22 @@
+uuid: d674ed0e-e9a8-417f-a494-64b49532f3ab
+langcode: en
+status: true
+dependencies:
+  module:
+    - datastore
+    - harvest
+    - metastore
+_core:
+  default_config_hash: ZZLtF5C8zu18vwuUnp5ZEJnmAcsFTfNOLvYk2fYnmrA
+id: api_user
+label: 'API user'
+weight: 3
+is_admin: false
+permissions:
+  - datastore_api_drop
+  - datastore_api_import
+  - harvest_api_index
+  - harvest_api_info
+  - harvest_api_register
+  - harvest_api_run
+  - 'post put delete datasets through the api'

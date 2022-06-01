@@ -1,0 +1,6 @@
+_core:
+  default_config_hash: piGrl23BGSb2A_geVWb079Th39PzA5fWSxUD8h5Jg-I
+rows_limit: 500
+purge_file: 1
+purge_table: 1
+triggering_properties: {  }

@@ -1,0 +1,22 @@
+uuid: 1492e569-ca5c-422b-88d4-a75e7bae9f2b
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - dkan_js_frontend_bartik
+_core:
+  default_config_hash: '-laWx8WA-ikiIEH3NJQ0hVbjqk3iEuBms91LB0B4IQU'
+id: dkan_js_frontend_bartik_help
+theme: dkan_js_frontend_bartik
+region: content
+weight: -30
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  label_display: '0'
+  provider: help
+visibility: {  }
