@@ -47,5 +47,12 @@ RUN composer install \
 ## Copy settings for production
 ####
 FROM build as production
-COPY conf/settings.prod.php ./src/sites
+COPY conf/settings.docker.php ./src/sites
+
+####
+## Copy settings for production
+####
+FROM build as production
+COPY conf/settings.docker.php ./src/sites
+
 
