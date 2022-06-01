@@ -49,10 +49,4 @@ RUN composer install \
 FROM build as production
 COPY conf/settings.docker.php ./src/sites
 
-####
-## Copy settings for production
-####
-FROM build as production
-COPY conf/settings.docker.php ./src/sites
-
 

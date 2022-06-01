@@ -21,6 +21,7 @@ services:
     container_name: drupal
     environment:
       CLIENTID : 'dkan2-client-koeln'
+      DKTL_DOCKER: 1
       XDEBUG_ENABLED: 0
       DRUPAL_DATABASE_HOST: 'db'
       DRUPAL_DATABASE_PORT: '3306'
