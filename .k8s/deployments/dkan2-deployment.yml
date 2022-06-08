@@ -23,14 +23,14 @@ spec:
           volumeMounts:
             - mountPath: /var/www/html
               name: shared-data
-          command: ["/bin/sh", "-c", "cp -r /app/data/. /var/www/html"]
+          command: ["/bin/sh", "-c", "cp -r /app/data/. /var/www/html && ./update.sh"]
       containers:
         - name: web
           image: nginx:stable-alpine
           lifecycle:
             postStart:
               exec:
-                command: [ "/bin/sh", "-c", "chmod -R 777 /var/www/html/web/sites/default/files && chmod -R 777 /var/www/html/private" ]
+                command: [ "/bin/sh", "-c", "chmod -R 777 /var/www/html" ]
           ports:
             - containerPort: 80
           volumeMounts:
@@ -51,6 +51,10 @@ spec:
             - secretRef:
                 name: regcred
           env:
+            - name: CLIENTID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
             - name: DRUPAL_DATABASE_HOST
               value: mariadb:3306
             - name: DRUPAL_DATABASE_NAME

@@ -8,7 +8,7 @@ data:
     }
     http {
       server {
-        root /var/www/html/web;
+        root /var/www/html/docroot;
         include  /etc/nginx/mime.types;
         location = /favicon.ico {
             log_not_found off;
