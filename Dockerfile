@@ -30,7 +30,7 @@ COPY composer.json composer.lock ./
 COPY docroot/ ./docroot
 COPY config/ ./config
 COPY src/ ./src
-COPY scripts/install.sh ./
+COPY scripts/* ./
 
 
 
@@ -46,7 +46,12 @@ RUN composer install \
 ####
 ## Copy settings for production
 ####
-FROM build as production
-COPY conf/settings.docker.php ./src/sites
+FROM build as development
+COPY conf/settings.docker.php ./src/site
 
+####
+## Copy settings for production
+####
+FROM build as production
+COPY conf/settings.prod.php ./src/site
 
