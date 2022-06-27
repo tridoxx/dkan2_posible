@@ -12,11 +12,6 @@ services:
     ports:
       - 80:80
   drupal:
-    #build:
-      # context: .
-      # dockerfile: Dockerfile
-      # target: development
-      # target: production
     image: markaspot/dkan2:latest
     container_name: drupal
     environment:
@@ -69,5 +64,6 @@ services:
       - db
     networks:
       - drupal
+
 networks:
   drupal:

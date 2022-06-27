@@ -22,26 +22,26 @@ RUN curl -OL https://github.com/drush-ops/drush-launcher/releases/latest/downloa
    apk del --no-cache freetype-dev libpng-dev libjpeg-turbo-dev \
  && docker-php-ext-enable pdo_mysql
 
-
 # Copy composer files to image
 COPY composer.json composer.lock ./
 
 # Only copy custom modules in prod / mounted volume in dev
-COPY docroot/ ./docroot
+
 COPY config/ ./config
 COPY src/ ./src
 COPY scripts/* ./
 
-
-
 #RUN cd docroot/sites/default/ && rm -rf settings.*.php
+RUN mkdir -p docroot/sites docroot/libraries
 
-# Run composer install on the current composer.json/.lock.
-RUN composer install \
-    --ignore-platform-reqs \
-    --no-interaction \
-    --no-dev \
-    --prefer-dist
+
+# WORKDIR '/app/data'
+RUN git clone -b cgn https://github.com/markaspot/data-catalog-app.git src/frontend
+
+RUN ln -s ../../src/site docroot/sites/default
+RUN ln -s ../src/frontend/ docroot/frontend
+
+
 
 ####
 ## Copy settings for production
