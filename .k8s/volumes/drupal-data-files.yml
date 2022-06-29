@@ -1,9 +1,9 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: web
+  name: drupal-data-files
   labels:
-    app: web
+    app: dkan2
 spec:
   accessModes:
     - ReadWriteOnce

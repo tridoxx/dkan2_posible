@@ -22,31 +22,37 @@ spec:
             - name: regcred
           volumeMounts:
             - mountPath: /var/www/html
-              name: shared-data
-          command: ["/bin/sh", "-c", "cp -r /app/data/. /var/www/html && ./update.sh"]
+              name: drupal-data
+          command: ["/bin/sh", "-c", "cp -r /app/data/. /var/www/html"]
       containers:
-        - name: web
+        - name: nginx
           image: nginx:stable-alpine
           lifecycle:
             postStart:
               exec:
-                command: [ "/bin/sh", "-c", "chmod -R 777 /var/www/html" ]
+                command: [ "/bin/sh", "-c",  "" ]
           ports:
             - containerPort: 80
           volumeMounts:
-            - name: shared-data
+            - name: drupal-data
               mountPath: /var/www/html
+            - name: drupal-data-files
+              mountPath: /app/data/docroot/sites/default/files
             - name: nginx-config-volume
               mountPath: /etc/nginx/nginx.conf
               subPath: nginx.conf
         - name: drupal
           imagePullPolicy: Always
           image: markaspot/dkan2:latest
+          lifecycle:
+            postStart:
+              exec:
+                command: [ "/bin/sh", "-c",  "chown -R www-data:www-data /var/www/html && ./install.sh && cp -r /app/data/. /var/www/html" ]
           volumeMounts:
-            - name: shared-data
+            - name: drupal-data
               mountPath: /var/www/html
-            - name: shared-data
-              mountPath: /var/www/html/private
+            - name: drupal-data-files
+              mountPath: /app/data/docroot/sites/default/files
           envFrom:
             - secretRef:
                 name: regcred
@@ -56,7 +62,7 @@ spec:
                 fieldRef:
                   fieldPath: metadata.namespace
             - name: DRUPAL_DATABASE_HOST
-              value: mariadb:3306
+              value: mariadb
             - name: DRUPAL_DATABASE_NAME
               value: drupal
             - name: DRUPAL_DATABASE_USERNAME
@@ -79,10 +85,11 @@ spec:
       imagePullSecrets:
         - name: regcred
       volumes:
-        - name: shared-data
+        - name: drupal-data
           emptyDir: {}
-          # https://github.com/kubernetes/kubernetes/issues/831
-          # https://github.com/kubernetes/kubernetes/issues/22894
+        - name: drupal-data-files
+          persistentVolumeClaim:
+            claimName: drupal-data-files
         - name: nginx-config-volume
           configMap:
             name: nginx-config
