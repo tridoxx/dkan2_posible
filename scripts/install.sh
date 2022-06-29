@@ -4,6 +4,7 @@ echo "Client ID is $CLIENTID";
 URL=https://github.com/markaspot/$CLIENTID/archive/refs/heads/master.zip
 echo "Installing from $URL";
 
+echo '$settings['file_public_base_url'] = "http://localhost/sites/default/files";' | tee -a >> docroot/sites/settings.prod.php
 
 composer install \
     --ignore-platform-reqs \
