@@ -36,7 +36,7 @@ RUN mkdir -p docroot/sites docroot/libraries
 
 
 # WORKDIR '/app/data'
-RUN git clone -b cgn https://github.com/markaspot/data-catalog-app.git src/frontend
+RUN git clone https://github.com/markaspot/data-catalog-app.git src/frontend
 
 RUN ln -s ../../src/site docroot/sites/default
 RUN ln -s ../src/frontend/ docroot/frontend
