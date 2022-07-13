@@ -12,7 +12,6 @@ console/
 
 # Ignore sensitive information
 /conf/settings.local.php
-/conf/settings.prod.php
 
 # Ignore Drupal's file directory
 /docroot/sites/*/files/
