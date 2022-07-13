@@ -23,7 +23,10 @@ rm -rf src/frontend
 # unzip cgn.zip -d /tmp/ && rm cgn.zip
 # cp -r /tmp/data-catalog-app-cgn src/frontend && rm -rf /tmp/data-catalog-app-cgn
 
-git clone -b $CLIENTID https://github.com/markaspot/data-catalog-app.git src/frontend
+# git clone -b $CLIENTID https://github.com/markaspot/data-catalog-app.git src/frontend
+
+git clone https://github.com/markaspot/data-catalog-app.git src/frontend
+
 cd src/frontend/
 npm install node-sass@npm:sass
 npm install && npm run build
