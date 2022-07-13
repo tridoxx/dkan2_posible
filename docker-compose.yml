@@ -15,10 +15,10 @@ services:
     image: markaspot/dkan2:latest
     container_name: drupal
     environment:
-      CLIENTID : 'dkan2-client-koeln'
+      CLIENTID : 'dkan2-client-cgn'
       DKTL_DOCKER: 1
       XDEBUG_ENABLED: 0
-      DRUPAL_DATABASE_HOST: 'db'
+      DKAN_MARIADB_SERVICE_HOST: 'db'
       DRUPAL_DATABASE_PORT: '3306'
       DRUPAL_DATABASE_NAME: 'drupal'
       DRUPAL_DATABASE_USERNAME: 'drupal'
