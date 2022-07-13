@@ -6,11 +6,13 @@ echo "Installing from $URL";
 
 echo '$settings['file_public_base_url'] = "http://localhost/sites/default/files";' | tee -a >> docroot/sites/settings.prod.php
 
-composer install \
+composer update \
     --ignore-platform-reqs \
     --no-interaction \
     --no-dev \
     --prefer-dist;
+
+
 ## Override frontend
 
 # echo "Override Frontend with CGN UI"
@@ -21,11 +23,11 @@ rm -rf src/frontend
 # unzip cgn.zip -d /tmp/ && rm cgn.zip
 # cp -r /tmp/data-catalog-app-cgn src/frontend && rm -rf /tmp/data-catalog-app-cgn
 
-git clone https://github.com/GetDKAN/data-catalog-react.git src/frontend
+git clone -b $CLIENTID https://github.com/markaspot/data-catalog-app.git src/frontend
 cd src/frontend/
 npm install node-sass@npm:sass
 npm install && npm run build
-
+echo "done";
 
 
 
@@ -58,3 +60,4 @@ drush  sapi-i
  mkdir -p docroot/schema && cp -r /tmp/$CLIENTID-master/schema/collections docroot/schema/
  rm -rf /tmp/$CLIENTID-master
  echo "Installation done";
+ drush user:password admin "admin"
