@@ -1,4 +1,4 @@
-# DKAN2 for CGN in Kubernetes
+# DKAN2 for Köln in Kubernetes
 
 
 ## Lokale Entwicklung unter Docker
@@ -40,7 +40,7 @@ Namespace für alle Operationen default auswählen
 
 PVC anlegen
 
-`kubectl apply -f .k8s/volumes/web-pvc.yml`
+`kubectl apply -f .k8s/volumes/dkan-files.yml`
 
 Configmaps anlegen
 
