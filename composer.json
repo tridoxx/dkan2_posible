@@ -39,15 +39,18 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "composer/installers": true,
+            "cweagans/composer-patches": true,
+            "drupal/core-composer-scaffold": true,
+            "oomphinc/composer-installers-extender": true,
+            "drupal/core-project-message": true
+        }
     },
     "extra": {
         "enable-patching": true,
-        "patches": {
-            "drupal/core": {
-                "3230541: Fix queue items not being leased by cron for proper time segments": "https://www.drupal.org/files/issues/2022-02-16/3230541-11.diff"
-            }
-        },
         "drupal-scaffold": {
             "locations": {
                 "web-root": "docroot/"
