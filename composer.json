@@ -25,8 +25,9 @@
         "drupal/core-project-message": "~9.3.0",
         "drupal/core-recommended": "~9.3.0",
         "drush/drush": "^10.1",
-        "getdkan/dkan": "^2.13",
-        "getdkan/dkan_js_frontend_bartik": "dev-main"
+        "getdkan/dkan": "2.x-dev",
+        "getdkan/dkan_js_frontend_bartik": "dev-main",
+        "drupal/select_or_other": "^4.0"
     },
     "require-dev": {
         "drupal/core-dev": "~9.3.0",
